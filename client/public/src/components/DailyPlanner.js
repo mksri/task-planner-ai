@@ -6,28 +6,37 @@ const DailyPlanner = () => {
 
   const generatePlan = async () => {
 
-    const res = await fetch("http://localhost:5000/api/ai/day-plan");
+    try {
 
-    const data = await res.json();
+      const res = await fetch("http://localhost:5000/api/ai/day-plan");
 
-    setPlan(data.plan);
+      const data = await res.json();
+
+      console.log(data);
+
+      setPlan(data.plan);
+
+    } catch (error) {
+      console.error("Error generating day plan:", error);
+    }
 
   };
 
   return (
-    <div className="feature-card">
-
-      <h2>📅 AI Daily Planner</h2>
+    <div>
 
       <button onClick={generatePlan}>
         Generate My Day
       </button>
 
-      <pre>{plan}</pre>
+      {plan && (
+        <div style={{marginTop:"10px"}}>
+          <pre>{plan}</pre>
+        </div>
+      )}
 
     </div>
   );
-
 };
 
 export default DailyPlanner;

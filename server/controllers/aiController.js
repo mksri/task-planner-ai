@@ -57,19 +57,22 @@ export const generateDayPlan = (req,res)=>{
 
   res.json({
 
-    plan:`
+    plan: `
 Morning
-• Smoothie breakfast
-• Team meeting
+• Wake up 7 AM
+• Healthy breakfast
+• Check emails
 
 Afternoon
-• Lunch: Veg wrap
-• Finish report
+• Lunch
+• Project work
 
 Evening
-• Buy groceries
-• Dinner: Dal rice
+• Walk or exercise
+• Light dinner
+• Read or relax
 `
+
   })
 
 }

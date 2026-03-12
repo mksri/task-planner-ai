@@ -6,18 +6,23 @@ const GroceryList = () => {
 
   const generateGroceries = async () => {
 
-    const res = await fetch("http://localhost:5000/api/ai/groceries");
+    try{
 
-    const data = await res.json();
+      const res = await fetch("http://localhost:5000/api/ai/groceries");
 
-    setItems(data.items);
+      const data = await res.json();
+
+      setItems(data.items);
+
+    }catch(err){
+      console.log(err);
+    }
 
   };
 
   return (
-    <div className="feature-card">
 
-      <h2>🛒 Grocery Generator</h2>
+    <div>
 
       <button onClick={generateGroceries}>
         Generate Grocery List
@@ -30,8 +35,8 @@ const GroceryList = () => {
       </ul>
 
     </div>
-  );
 
+  );
 };
 
 export default GroceryList;

@@ -50,7 +50,7 @@ const MealPlanner = () => {
 
       </div>
 
-     <div className="meal-list">
+     <div className="meal-plan">
   {meals.map((meal,i)=>(
     <div key={i} className="meal-item">
       {meal}
