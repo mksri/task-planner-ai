@@ -6,11 +6,14 @@ import {
   planDay
 } from "../controllers/aiController.js";
 
+import { detectBusyDay } from "../controllers/busyController.js";
+
 const router = express.Router();
 
 router.get("/meals", generateMeals);
 
 router.post("/groceries", generateGroceries);
+router.get("/busy-check", detectBusyDay);
 
 router.post("/prioritize", prioritizeTasks);
 

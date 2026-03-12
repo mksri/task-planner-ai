@@ -1,44 +1,26 @@
 import React from "react";
 
-const MentalLoadDashboard = ({ meals, tasks }) => {
+const MentalLoadDashboard = ({tasks=[], meals=[]}) => {
 
-  const mealCount = meals.length;
-  const taskCount = tasks.length;
-
-  const decisionsSaved = mealCount + taskCount;
-
-  const timeSaved = (decisionsSaved * 5) / 60;
+  const decisions = tasks.length + meals.length;
+  const hoursSaved = (decisions * 5) / 60;
 
   return (
-    <div className="dashboard">
+
+    <div className="card">
 
       <h2>🧠 Mental Load Dashboard</h2>
 
-      <div className="stats">
+      <p>Decisions automated: {decisions}</p>
 
-        <div className="card">
-          <h3>{mealCount}</h3>
-          <p>Meals Planned</p>
-        </div>
+      <p>Tasks organized: {tasks.length}</p>
 
-        <div className="card">
-          <h3>{taskCount}</h3>
-          <p>Tasks Managed</p>
-        </div>
+      <p>Meals planned: {meals.length}</p>
 
-        <div className="card">
-          <h3>{decisionsSaved}</h3>
-          <p>Decisions Automated</p>
-        </div>
-
-        <div className="card">
-          <h3>{timeSaved.toFixed(1)} hrs</h3>
-          <p>Time Saved</p>
-        </div>
-
-      </div>
+      <p>Time saved: {hoursSaved.toFixed(1)} hrs/week</p>
 
     </div>
+
   );
 };
 

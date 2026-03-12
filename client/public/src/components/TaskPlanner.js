@@ -30,11 +30,13 @@ const TaskPlanner = () => {
         Add Task
       </button>
 
-      <ul>
-        {tasks.map((task,i)=>(
-          <li key={i}>{task}</li>
-        ))}
-      </ul>
+   <ul>
+ {tasks.map((task,i)=>(
+   <li key={i}>
+     <input type="checkbox"/> {task}
+   </li>
+ ))}
+</ul>
 
     </div>
   );

@@ -50,15 +50,13 @@ const MealPlanner = () => {
 
       </div>
 
-      <div className="meal-grid">
-
-        {meals.map((meal, index) => (
-          <div key={index} className="meal-card">
-            {meal}
-          </div>
-        ))}
-
-      </div>
+     <div className="meal-list">
+  {meals.map((meal,i)=>(
+    <div key={i} className="meal-item">
+      {meal}
+    </div>
+  ))}
+</div>
 
     </div>
   );

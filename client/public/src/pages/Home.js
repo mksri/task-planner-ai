@@ -4,23 +4,43 @@ import MealPlanner from "../components/MealPlanner";
 import GroceryList from "../components/GroceryList";
 import TaskPlanner from "../components/TaskPlanner";
 import DailyPlanner from "../components/DailyPlanner";
+import BusyDetector from "../components/BusyDetector";
 
 const Home = () => {
 
   return (
-    <div>
 
-      <MealPlanner/>
+    <div className="container">
 
-      <GroceryList/>
+      <h1 className="title">🤖 AI Life Assistant</h1>
 
-      <TaskPlanner/>
+      <div className="grid">
 
-      <DailyPlanner/>
+        <div className="card">
+          <MealPlanner/>
+        </div>
+
+        <div className="card">
+          <GroceryList/>
+        </div>
+
+        <div className="card">
+          <TaskPlanner/>
+        </div>
+
+        <div className="card">
+          <DailyPlanner/>
+        </div>
+
+        <div className="card">
+          <BusyDetector/>
+        </div>
+
+      </div>
 
     </div>
-  );
 
+  );
 };
 
 export default Home;
