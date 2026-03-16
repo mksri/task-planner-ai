@@ -1,72 +1,35 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react"
+import { fetchSummary } from "../api"
+import Dashboard from "../components/Dashboard"
 
-import Preferences from "../components/Preferences";
-import CalendarSync from "../components/CalendarSync";
-import EnergySelector from "../components/EnergySelector";
+export default function Home(){
 
-import MealPlanner from "../components/MealPlanner";
-import GroceryList from "../components/GroceryList";
-import TaskPlanner from "../components/TaskPlanner";
-import DailyPlanner from "../components/DailyPlanner";
-import WeeklyPlanner from "../components/WeeklyPlanner";
-import BusyDetector from "../components/BusyDetector";
+const [data,setData] = useState(null)
 
-const Home = () => {
+useEffect(()=>{
+  fetchSummary().then(setData)
+},[])
 
-  const [preferences, setPreferences] = useState({});
-  const [meetings, setMeetings] = useState(0);
-  const [energy, setEnergy] = useState("medium");
+if(!data){
+return <div className="app-title">Loading dashboard...</div>
+}
 
-  return (
+return(
 
-    <div className="container">
+<div className="app-container">
 
-      <h1 className="title">🤖 AI Life Assistant</h1>
+<h1 className="app-title">
+AI Life Assistant
+</h1>
 
-      <div className="grid">
+<Dashboard data={data}/>
 
-        <div className="card">
-          <Preferences setPreferences={setPreferences}/>
-        </div>
+<p className="footer-text">
+Your daily productivity companion
+</p>
 
-        <div className="card">
-          <CalendarSync setMeetings={setMeetings}/>
-        </div>
+</div>
 
-        <div className="card">
-          <EnergySelector energy={energy} setEnergy={setEnergy}/>
-        </div>
+)
 
-        <div className="card">
-          <BusyDetector meetings={meetings}/>
-        </div>
-
-        <div className="card">
-          <MealPlanner preferences={preferences} energy={energy}/>
-        </div>
-
-        <div className="card">
-          <GroceryList/>
-        </div>
-
-        <div className="card">
-          <TaskPlanner/>
-        </div>
-
-        <div className="card">
-          <DailyPlanner/>
-        </div>
-
-        <div className="card">
-          <WeeklyPlanner/>
-        </div>
-
-      </div>
-
-    </div>
-
-  );
-
-};
-
-export default Home;
+}
